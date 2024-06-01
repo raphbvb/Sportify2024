@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enregistrer un Coach</title>
+</head>
+<body>
+    <h1>Enregistrer un Coach</h1>
+    <form action="coach_enregistrement.php" method="POST" enctype="multipart/form-data">
+        <label for="nom">Nom:</label>
+        <input type="text" id="nom" name="nom"><br><br>
+
+        <label for="prenom">Prenom:</label>
+        <input type="text" id="prenom" name="prenom"><br><br>
+
+        <label for="specialite">Specialite:</label>
+        <select id="specialite" name="specialite">
+            <option value="Musculation">Musculation</option>
+            <option value="Fitness">Fitness</option>
+            <option value="Biking">Biking</option>
+            <option value="Cardio-Training">Cardio-Training</option>
+            <option value="Cours Collectifs">Cours Collectifs</option>
+            <option value="Basketball">Basketball</option>
+            <option value="Football">Football</option>
+            <option value="Rugby">Rugby</option>
+            <option value="Tennis">Tennis</option>
+            <option value="Natation">Natation</option>
+            <option value="Plongeon">Plongeon</option>
+        </select><br><br>
+
+        <label for="salle">Salle:</label>
+        <input type="text" id="salle" name="salle"><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email"><br><br>
+
+        <label for="telephone">Telephone:</label>
+        <input type="text" id="telephone" name="telephone"><br><br>
+
+        <label for="cv">CV (PDF):</label>
+        <input type="file" id="cv" name="cv" accept="application/pdf"><br><br>
+
+        <label for="photo">Photo:</label>
+        <input type="file" id="photo" name="photo"><br><br>
+
+        <input type="submit" value="Enregistrer">
+    </form>
+</body>
+</html>
