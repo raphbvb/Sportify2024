@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salle de Sport Omnes</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <h1>Salle de Sport Omnes</h1>
+            <img src="C:\MAMP\htdocs\piscine\images globales\Capture d'écran 2024-05-27 174921.png" alt="Salle de Sport Omnes">
+        </header>
+        <section class="section" id="schedule-section">
+            <h2>Horaires d'ouverture</h2>
+            <ul>
+                <li>Lundi: 8h00 - 22h00</li>
+                <li>Mardi: 8h00 - 22h00</li>
+                <li>Mercredi: 8h00 - 22h00</li>
+                <li>Jeudi: 8h00 - 22h00</li>
+                <li>Vendredi: 8h00 - 22h00</li>
+                <li>Samedi: 9h00 - 20h00</li>
+                <li>Dimanche: 10h00 - 18h00</li>
+            </ul>
+            <div class="image-container">
+        <img src="C:\MAMP\htdocs\piscine\salledesport.jfif" alt="Description de l'image">
+    </div>
+    <button id="contact-button">Contacter la Salle</button>
+    <p><a href="souscription.html">Souscrire à la Salle</a></p>
+        </section>
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section about">
+                    <h2>À propos</h2>
+                    <p>Sportify est une plateforme de consultation sportive qui connecte les passionnés de sport avec les meilleurs professionnels.</p>
+                </div>
+                <div class="footer-section links">
+                    <h2>Liens Utiles</h2>
+                    <ul>
+                        <li><a href="#">Politique de Confidentialité</a></li>
+                        <li><a href="#">Mentions Légales</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2024 Sportify | Tous droits réservés
+            </div>
+        </footer>
+    </div>
+    <script>
+        document.getElementById('contact-button').addEventListener('click', function() {
+            window.location.href = 'tel:+1234567890'; // Remplacez par le numéro de téléphone de la salle de sport
+        });
+    </script>
+</body>
+</html>
