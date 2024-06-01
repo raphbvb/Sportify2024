@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activités Sportives</title>
+    <link rel="stylesheet" href="styles-act.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <h1>Sportify: Activités Sportives</h1>
+            <img src="C:/MAMP/htdocs/piscine/images globales/Capture d'écran 2024-05-27 174921.png" alt="Logo Sportify">
+        </header>
+        <nav class="navigation">
+            <a href="accueil.html"><button>Accueil</button></a>
+            <button id="browse-button">Tout Parcourir</button>
+            <div id="browse-dropdown" class="dropdown-content">
+                <a href="activites-sportives.html">Activités sportives</a>
+                <a href="sports-competition.html">Les Sports de compétition</a>
+                <a href="salle-de-sport-omnes.html">Salle de sport Omnes</a>
+            </div>
+            <button onclick="location.href='recherche.html'">Recherche</button>
+            <button onclick="location.href='rendez-vous.html'">Rendez-vous</button>
+            <button onclick="location.href='compte.html'">Votre Compte</button>
+        </nav>
+        <section class="section" id="main-section">
+            <h2>Activités Sportives</h2>
+            <!-- Carrousel des activités sportives -->
+            <div id="carrousel">
+                <div class="carousel-container">
+                    <ul> 
+                        <li>
+                            <a href="musculation.html">
+                                <img src="C:\MAMP\htdocs\piscine\img carroussel actsport\shutterstock_673719400-min-890x606.jpg" alt="Musculation">
+                                <span>Musculation</span>
+                            </a>
+                        </li>  
+                        <li>
+                            <a href="fitness.html">
+                                <img src="C:\MAMP\htdocs\piscine\img carroussel actsport\1920_1662117740_fungroupfitnessideas.jpeg" alt="Fitness">
+                                <span>Fitness</span>
+                            </a>
+                        </li> 
+                        <li>
+                            <a href="biking.html">
+                                <img src="C:\MAMP\htdocs\piscine\img carroussel actsport\4fd3abd7e48f068f782e605c40fd6dd7.jpg" alt="Biking">
+                                <span>Biking</span>
+                            </a>
+                        </li> 
+                        <li>
+                            <a href="cardio-training.html">
+                                <img src="C:\MAMP\htdocs\piscine\img carroussel actsport\OIP.jpeg" alt="Cardio-Training">
+                                <span>Cardio-Training</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="cours-collectifs.html">
+                                <img src="C:\MAMP\htdocs\piscine\img carroussel actsport\R.jpeg" alt="Cours Collectifs">
+                                <span>Cours Collectifs</span>
+                            </a>
+                        </li> 
+                    </ul>
+                </div>
+                <div class="prev">&lt;</div>
+                <div class="next">&gt;</div>
+            </div>
+        </section>
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section about">
+                    <h2>À propos</h2>
+                    <p>Sportify est une plateforme de consultation sportive qui connecte les passionnés de sport avec les meilleurs professionnels.</p>
+                </div>
+                <div class="footer-section links">
+                    <h2>Liens Utiles</h2>
+                    <ul>
+                        <li><a href="#">Politique de Confidentialité</a></li>
+                        <li><a href="#">Mentions Légales</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2024 Sportify | Tous droits réservés
+            </div>
+        </footer>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var $items = $('#carrousel ul li');
+            var max = $items.length;
+            var i = 0;
+
+            $items.hide();
+            $items.eq(i).show();
+
+            $('.next').click(function () {
+                $items.eq(i).hide();
+                i = (i + 1) % max;
+                $items.eq(i).show();
+            });
+
+            $('.prev').click(function () {
+                $items.eq(i).hide();
+                i = (i - 1 + max) % max;
+                $items.eq(i).show();
+            });
+
+            function slideItems() {
+                setTimeout(function() {
+                    $items.eq(i).hide();
+                    i = (i + 1) % max;
+                    $items.eq(i).show();
+                    slideItems();
+                }, 4000);
+            }
+
+            slideItems();
+        });
+    </script>
+</body>
+</html>
