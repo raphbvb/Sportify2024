@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cours Collectifs</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <img src="C:/MAMP/htdocs/piscine/images globales/Capture d'écran 2024-05-27 174921.png" alt="Logo Sportify" class="logo">
+            <h1>Sportify: Cours Collectifs</h1>
+            <div class="banner">
+                <img src="C:\MAMP\htdocs\piscine\img carroussel actsport\R.jpeg" alt="Cours Collectifs Banner" class="banner-image">
+            </div>
+        </header>
+        <nav class="navigation">
+            <a href="accueil.html"><button>Accueil</button></a>
+            <button id="browse-button">Tout Parcourir</button>
+            <div id="browse-dropdown" class="dropdown-content">
+                <a href="activites-sportives.html">Activités sportives</a>
+                <a href="sports-competition.html">Les Sports de compétition</a>
+                <a href="salle-de-sport-omnes.html">Salle de sport Omnes</a>
+            </div>
+            <button id="search-button">Recherche</button>
+            <button id="appointment-button">Rendez-vous</button>
+            <div id="appointment-dropdown" class="dropdown-content">
+                <a href="prendre-rendez-vous.html">Prendre un rendez-vous</a>
+                <a href="mes-rendez-vous.html">Mes rendez-vous</a>
+            </div>
+            <button id="account-button">Votre Compte</button>
+            <div id="account-dropdown" class="dropdown-content">
+                <a href="connexion.html">Se connecter</a>
+                <a href="inscription.html">S'inscrire</a>
+            </div>
+        </nav>
+        <section class="section" id="main-section">
+            <div class="content">
+                <h2>Présentation des Cours Collectifs</h2>
+                <p>
+                    Les cours collectifs offrent une excellente opportunité de s'entraîner en groupe avec la motivation et le soutien d'un coach qualifié. Que ce soit pour du cardio, de la musculation, ou des activités plus douces comme le yoga, les cours collectifs sont adaptés à tous les niveaux.
+                </p>
+                <h2>Nos Coachs de Cours Collectifs</h2>
+                <ul class="coaches-list">
+                    <li>
+                        <h3>Anna Davis</h3>
+                        <p>Expérience: 10 ans</p>
+                        <p>Spécialité: Yoga et Pilates</p>
+                    </li>
+                    <li>
+                        <h3>James Miller</h3>
+                        <p>Expérience: 8 ans</p>
+                        <p>Spécialité: Bootcamp et HIIT</p>
+                    </li>
+                    <li>
+                        <h3>Emma Wilson</h3>
+                        <p>Expérience: 9 ans</p>
+                        <p>Spécialité: Danse Fitness et Zumba</p>
+                    </li>
+                    <!-- Ajoutez plus de coachs ici si nécessaire -->
+                </ul>
+            </div>
+        </section>
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section about">
+                    <h2>À propos</h2>
+                    <p>Sportify est une plateforme de consultation sportive qui connecte les passionnés de sport avec les meilleurs professionnels.</p>
+                </div>
+                <div class="footer-section links">
+                    <h2>Liens Utiles</h2>
+                    <ul>
+                        <li><a href="#">Politique de Confidentialité</a></li>
+                        <li><a href="#">Mentions Légales</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2024 Sportify | Tous droits réservés
+            </div>
+        </footer>
+    </div>
+    <script>$(document).ready(function() {
+            $('.sport-card').on('click', function() {
+                window.location.href = $(this).data('url');
+            });
+        });
+   // common.js
+document.addEventListener('DOMContentLoaded', function () {
+    const browseButton = document.getElementById('browse-button');
+    const browseDropdown = document.getElementById('browse-dropdown');
+    const appointmentButton = document.getElementById('appointment-button');
+    const appointmentDropdown = document.getElementById('appointment-dropdown');
+    const accountButton = document.getElementById('account-button');
+    const accountDropdown = document.getElementById('account-dropdown');
+
+    browseButton.addEventListener('click', function () {
+        browseDropdown.style.display = browseDropdown.style.display === 'block' ? 'none' : 'block';
+    });
+
+    appointmentButton.addEventListener('click', function () {
+        appointmentDropdown.style.display = appointmentDropdown.style.display === 'block' ? 'none' : 'block';
+    });
+
+    accountButton.addEventListener('click', function () {
+        accountDropdown.style.display = accountDropdown.style.display === 'block' ? 'none' : 'block';
+    });
+
+    window.addEventListener('click', function (event) {
+        if (!event.target.matches('#browse-button')) {
+            browseDropdown.style.display = 'none';
+        }
+        if (!event.target.matches('#appointment-button')) {
+            appointmentDropdown.style.display = 'none';
+        }
+        if (!event.target.matches('#account-button')) {
+            accountDropdown.style.display = 'none';
+        }
+    });
+});
+</script>
+
+</body>
+</html>
