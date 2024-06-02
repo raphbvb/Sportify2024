@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Musculation</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <img src="C:/MAMP/htdocs/piscine/images globales/Capture d'écran 2024-05-27 174921.png" alt="Logo Sportify" class="logo">
+            <h1>Sportify: Musculation</h1>
+            <div class="banner">
+                <img src="C:\MAMP\htdocs\piscine\img carroussel actsport\shutterstock_673719400-min-890x606.jpg" alt="Musculation Banner" class="banner-image">
+            </div>
+        </header>
+        <nav class="navigation">
+            <a href="accueil.html"><button>Accueil</button></a>
+            <button id="browse-button">Tout Parcourir</button>
+            <div id="browse-dropdown" class="dropdown-content">
+                <a href="activites-sportives.html">Activités sportives</a>
+                <a href="sports-competition.html">Les Sports de compétition</a>
+                <a href="salle-de-sport-omnes.html">Salle de sport Omnes</a>
+            </div>
+            <button id="search-button">Recherche</button>
+            <button id="appointment-button">Rendez-vous</button>
+            <div id="appointment-dropdown" class="dropdown-content">
+                <a href="prendre-rendez-vous.html">Prendre un rendez-vous</a>
+                <a href="mes-rendez-vous.html">Mes rendez-vous</a>
+            </div>
+            <button id="account-button">Votre Compte</button>
+            <div id="account-dropdown" class="dropdown-content">
+                <a href="connexion.html">Se connecter</a>
+                <a href="inscription.html">S'inscrire</a>
+            </div>
+        </nav>
+        <section class="section" id="main-section">
+            <div class="content">
+                <h2>Présentation de la Musculation</h2>
+                <p>
+                    La musculation est une discipline visant à développer la masse musculaire, la force et l'endurance par des exercices spécifiques et réguliers. Que vous soyez débutant ou athlète confirmé, la musculation vous permet de sculpter votre corps, de renforcer vos muscles et d'améliorer votre condition physique générale. Elle se pratique avec des poids libres, des machines ou simplement avec le poids du corps.
+                </p>
+                <h2>Nos Coachs de Musculation</h2>
+                <ul class="coaches-list">
+                    <li>
+                        <h3>John Doe</h3>
+                        <p>Expérience: 10 ans</p>
+                        <p>Spécialité: Hypertrophie et force</p>
+                    </li>
+                    <li>
+                        <h3>Jane Smith</h3>
+                        <p>Expérience: 8 ans</p>
+                        <p>Spécialité: Entraînement fonctionnel et rééducation</p>
+                    </li>
+                    <li>
+                        <h3>Emily Brown</h3>
+                        <p>Expérience: 6 ans</p>
+                        <p>Spécialité: Nutrition sportive et perte de poids</p>
+                    </li>
+                    <!-- Ajoutez plus de coachs ici si nécessaire -->
+                </ul>
+            </div>
+        </section>
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section about">
+                    <h2>À propos</h2>
+                    <p>Sportify est une plateforme de consultation sportive qui connecte les passionnés de sport avec les meilleurs professionnels.</p>
+                </div>
+                <div class="footer-section links">
+                    <h2>Liens Utiles</h2>
+                    <ul>
+                        <li><a href="#">Politique de Confidentialité</a></li>
+                        <li><a href="#">Mentions Légales</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2024 Sportify | Tous droits réservés
+            </div>
+        </footer>
+    </div>
+    <script> document.addEventListener('DOMContentLoaded', function () {
+    const searchButton = document.getElementById('search-button');
+    const mainSection = document.getElementById('main-section');
+    const searchSection = document.getElementById('search-section');
+    const browseButton = document.getElementById('browse-button');
+    const browseDropdown = document.getElementById('browse-dropdown');
+    const appointmentButton = document.getElementById('appointment-button');
+    const appointmentDropdown = document.getElementById('appointment-dropdown');
+    const accountButton = document.getElementById('account-button');
+    const accountDropdown = document.getElementById('account-dropdown');
+
+    searchButton.addEventListener('click', function () {
+        if (searchSection.style.display === 'none' || searchSection.style.display === '') {
+            mainSection.style.display = 'none';
+            searchSection.style.display = 'flex';
+        } else {
+            mainSection.style.display = 'block';
+            searchSection.style.display = 'none';
+        }
+    });
+
+    browseButton.addEventListener('click', function () {
+        if (browseDropdown.style.display === 'none' || browseDropdown.style.display === '') {
+            browseDropdown.style.display = 'block';
+        } else {
+            browseDropdown.style.display = 'none';
+        }
+    });
+
+    appointmentButton.addEventListener('click', function () {
+        if (appointmentDropdown.style.display === 'none' || appointmentDropdown.style.display === '') {
+            appointmentDropdown.style.display = 'block';
+        } else {
+            appointmentDropdown.style.display = 'none';
+        }
+    });
+
+    accountButton.addEventListener('click', function () {
+        if (accountDropdown.style.display === 'none' || accountDropdown.style.display === '') {
+            accountDropdown.style.display = 'block';
+        } else {
+            accountDropdown.style.display = 'none';
+        }
+    });
+
+    window.addEventListener('click', function(event) {
+        if (!event.target.matches('#browse-button') && !event.target.matches('#account-button') && !event.target.matches('#appointment-button')) {
+            if (browseDropdown.style.display === 'block') {
+                browseDropdown.style.display = 'none';
+            }
+            if (appointmentDropdown.style.display === 'block') {
+                appointmentDropdown.style.display = 'none';
+            }
+            if (accountDropdown.style.display === 'block') {
+                accountDropdown.style.display = 'none';
+            }
+        }
+    });
+});
+</script>
+</body>
+</html>
