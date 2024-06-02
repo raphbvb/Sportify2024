@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Page de Paiement</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; }
+        input { width: 100%; padding: 8px; box-sizing: border-box; }
+        button { padding: 10px 15px; background-color: #28a745; color: white; border: none; cursor: pointer; }
+    </style>
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Paiement</h1>
+        <form id="payment-form">
+            <div class="form-group">
+                <label for="cardholder-name">Nom du titulaire de la carte</label>
+                <input id="cardholder-name" type="text" required>
+            </div>
+            <div class="form-group">
+                <label for="card-number">Numéro de la carte de crédit</label>
+                <input id="card-number" type="text" maxlength="16" placeholder="XXXX XXXX XXXX XXXX" required>
+            </div>
+            <div class="form-group">
+                <label for="card-expiry">Date d'expiration (MM/AA)</label>
+                <input id="card-expiry" type="text" maxlength="5" placeholder="MM/AA" required>
+            </div>
+            <div class="form-group">
+                <label for="card-cvv">Cryptogramme visuel (CVV)</label>
+                <input id="card-cvv" type="text" maxlength="4" placeholder="XXX" required>
+            </div>
+            <button id="card-button">Payer</button>
+        </form>
+        <div id="payment-result"></div>
+    </div>
+
+    <script>
+        var stripe = Stripe('pk_test_your_public_key');
+        var elements = stripe.elements();
+        var cardElement = elements.create('card');
+        cardElement.mount('#card-number');
+
+        var cardholderName = document.getElementById('cardholder-name');
+        var cardExpiry = document.getElementById('card-expiry');
+        var cardCvv = document.getElementById('card-cvv');
+        var cardButton = document.getElementById('card-button');
+
+        cardButton.addEventListener('click', function(event) {
+            event.preventDefault();
+            stripe.createPaymentMethod({
+                type: 'card',
+                card: cardElement,
+                billing_details: {
+                    name: cardholderName.value
+                }
+            }).then(function(result) {
+                if (result.error) {
+                    document.getElementById('payment-result').textContent = result.error.message;
+                } else {
+                    // Envoi du paiement au serveur
+                    fetch('/charge.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            payment_method_id: result.paymentMethod.id,
+                            amount: 5000 // Montant en centimes (50.00€)
+                        })
+                    }).then(function(response) {
+                        return response.json();
+                    }).then(function(data) {
+                        if (data.error) {
+                            document.getElementById('payment-result').textContent = data.error;
+                        } else {
+                            document.getElementById('payment-result').textContent = 'Paiement réussi !';
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
