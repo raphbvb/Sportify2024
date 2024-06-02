@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biking</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <img src="C:/MAMP/htdocs/piscine/images globales/Capture d'écran 2024-05-27 174921.png" alt="Logo Sportify" class="logo">
+            <h1>Sportify: Biking</h1>
+            <div class="banner">
+                <img src="C:\MAMP\htdocs\piscine\img carroussel actsport\OIP.jpeg" alt="Biking Banner" class="banner-image">
+            </div>
+        </header>
+        <nav class="navigation">
+            <a href="accueil.html"><button>Accueil</button></a>
+            <button id="browse-button">Tout Parcourir</button>
+            <div id="browse-dropdown" class="dropdown-content">
+                <a href="activites-sportives.html">Activités sportives</a>
+                <a href="sports-competition.html">Les Sports de compétition</a>
+                <a href="salle-de-sport-omnes.html">Salle de sport Omnes</a>
+            </div>
+            <button id="search-button">Recherche</button>
+            <button id="appointment-button">Rendez-vous</button>
+            <div id="appointment-dropdown" class="dropdown-content">
+                <a href="prendre-rendez-vous.html">Prendre un rendez-vous</a>
+                <a href="mes-rendez-vous.html">Mes rendez-vous</a>
+            </div>
+            <button id="account-button">Votre Compte</button>
+            <div id="account-dropdown" class="dropdown-content">
+                <a href="connexion.html">Se connecter</a>
+                <a href="inscription.html">S'inscrire</a>
+            </div>
+        </nav>
+        <section class="section" id="main-section">
+            <div class="content">
+                <h2>Présentation du Biking</h2>
+                <p>
+                    Le biking est un excellent moyen d'améliorer la condition cardiovasculaire, de renforcer les muscles des jambes et de brûler des calories. Que ce soit en extérieur sur les routes et les sentiers, ou en intérieur sur des vélos stationnaires, le biking est une activité accessible à tous.
+                </p>
+                <h2>Nos Coachs de Biking</h2>
+                <ul class="coaches-list">
+                    <li>
+                        <h3>Amy Thompson</h3>
+                        <p>Expérience: 15 ans</p>
+                        <p>Spécialité: Endurance et résistance</p>
+                    </li>
+                    <li>
+                        <h3>David Johnson</h3>
+                        <p>Expérience: 10 ans</p>
+                        <p>Spécialité: Techniques de pédalage et performance</p>
+                    </li>
+                    <li>
+                        <h3>Rachel Moore</h3>
+                        <p>Expérience: 8 ans</p>
+                        <p>Spécialité: Entraînement en intervalle et HIIT</p>
+                    </li>
+                    <!-- Ajoutez plus de coachs ici si nécessaire -->
+                </ul>
+            </div>
+        </section>
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section about">
+                    <h2>À propos</h2>
+                    <p>Sportify est une plateforme de consultation sportive qui connecte les passionnés de sport avec les meilleurs professionnels.</p>
+                </div>
+                <div class="footer-section links">
+                    <h2>Liens Utiles</h2>
+                    <ul>
+                        <li><a href="#">Politique de Confidentialité</a></li>
+                        <li><a href="#">Mentions Légales</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2024 Sportify | Tous droits réservés
+            </div>
+        </footer>
+    </div>
+    <script> $(document).ready(function() {
+            $('.sport-card').on('click', function() {
+                window.location.href = $(this).data('url');
+            });
+        });
+   // common.js
+document.addEventListener('DOMContentLoaded', function () {
+    const browseButton = document.getElementById('browse-button');
+    const browseDropdown = document.getElementById('browse-dropdown');
+    const appointmentButton = document.getElementById('appointment-button');
+    const appointmentDropdown = document.getElementById('appointment-dropdown');
+    const accountButton = document.getElementById('account-button');
+    const accountDropdown = document.getElementById('account-dropdown');
+
+    browseButton.addEventListener('click', function () {
+        browseDropdown.style.display = browseDropdown.style.display === 'block' ? 'none' : 'block';
+    });
+
+    appointmentButton.addEventListener('click', function () {
+        appointmentDropdown.style.display = appointmentDropdown.style.display === 'block' ? 'none' : 'block';
+    });
+
+    accountButton.addEventListener('click', function () {
+        accountDropdown.style.display = accountDropdown.style.display === 'block' ? 'none' : 'block';
+    });
+
+    window.addEventListener('click', function (event) {
+        if (!event.target.matches('#browse-button')) {
+            browseDropdown.style.display = 'none';
+        }
+        if (!event.target.matches('#appointment-button')) {
+            appointmentDropdown.style.display = 'none';
+        }
+        if (!event.target.matches('#account-button')) {
+            accountDropdown.style.display = 'none';
+        }
+    });
+});
+</script>
+
+</body>
+</html>
