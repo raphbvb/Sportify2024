@@ -4,6 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coachs</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+        .free {
+            background-color: green;
+            color: white;
+        }
+        .occupied {
+            background-color: red;
+            color: white;
+        }
+        .empty {
+            background-color: white;
+        }
+    </style>
 </head>
 <body>
 <?php
@@ -40,11 +62,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "Courriel: " . $row["email"] . "<br>";
             
             // Boutons
-            echo "<button onclick=\"prendreRdv('".$row["nom"]."','".$row["prenom"]."')\">Prendre un RDV</button>";
-            echo "<button onclick=\"communiquerCoach('".$row["email"]."')\">Communiquer avec le coach</button>";
+            echo "<button onclick=\"window.location.href='selection_creneau.php?coach_id=".$row["id"]."'\">Prendre un RDV</button>";
+            echo "<button onclick=\"communiquerCoach('".$row["id"]."')\">Communiquer avec le coach</button>";
             echo "<button onclick=\"voirCv(" . $row["id"] . ")\">Voir le CV</button>";
 
-            
+            // Affichage du tableau des créneaux
+            echo "<h3>Créneaux de disponibilité pour " . $row["prenom"] . " " . $row["nom"] . ":</h3>";
+            echo "<table>";
+            echo "<tr><th>Heure</th><th>Lundi</th><th>Mardi</th><th>Mercredi</th><th>Jeudi</th><th>Vendredi</th></tr>";
+
+            // Heures de 8h à 20h
+            for ($h = 8; $h < 21; $h++) {
+                $heure_debut = sprintf("%02d:00:00", $h);
+                echo "<tr><td>$heure_debut</td>";
+                $jours = ["lundi", "mardi", "mercredi", "jeudi", "vendredi"];
+                foreach ($jours as $jour) {
+                    $sql_creneau = "SELECT statut_creneau FROM creneau WHERE coach_id = " . $row['id'] . " AND jour = '$jour' AND heure_debut = '$heure_debut'";
+                    $result_creneau = $conn->query($sql_creneau);
+
+                    if ($result_creneau->num_rows > 0) {
+                        $row_creneau = $result_creneau->fetch_assoc();
+                        $statut = $row_creneau['statut_creneau'];
+                        $class = $statut == 0 ? 'free' : 'occupied';
+                        echo "<td class='$class'>" . ($statut == 0 ? "Libre" : "Occupé") . "</td>";
+                    } else {
+                        echo "<td class='empty'></td>";
+                    }
+                }
+                echo "</tr>";
+            }
+
+            echo "</table>";
             echo "</li>";
         }
         echo "</ul>";
@@ -56,13 +104,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 $conn->close();
 ?>
 <script>
-        // Fonction pour voir le CV
-        function voirCv(coachId) {
-            // Redirection vers la page voir_cv.php avec l'ID du coach
-            window.location.href = 'voir_cv.php?id=' + coachId;
-        }
-    </script>
+    // Fonction pour voir le CV
+    function voirCv(coachId) {
+        // Redirection vers la page voir_cv.php avec l'ID du coach
+        window.location.href = 'voir_cv.php?id=' + coachId;
+    }
+</script>
 </body>
 </html>
-
-
